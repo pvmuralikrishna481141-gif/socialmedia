@@ -62,3 +62,31 @@ Visit the Vite dev URL (usually `http://localhost:5173`), sign up a new
 account, then log in with the same email/password — the request now goes to
 MongoDB via the Express API instead of just faking a redirect.
 
+---
+
+## 4. Deploying on Render
+
+### Option A: Using the Render Blueprint (`render.yaml`)
+1. In Render, select **New +** -> **Blueprint**.
+2. Connect your GitHub repository (`socialmedia`).
+3. Render will automatically read `render.yaml` and configure both:
+   - **Backend Web Service** (`server`)
+   - **Frontend Static Site** (`client`)
+
+### Option B: Deploying Backend as a Web Service Manually
+- **Root Directory**: `server`
+- **Build Command**: `npm install`
+- **Start Command**: `npm start`
+- **Environment Variables**:
+  - `MONGO_URI`: Your MongoDB Atlas URI
+  - `CLIENT_URL`: Your frontend URL
+  - `PORT`: `5000`
+
+### Option C: Deploying Frontend as a Static Site Manually
+- **Root Directory**: `client`
+- **Build Command**: `npm install && npm run build`
+- **Publish Directory**: `dist`
+- **Environment Variables**:
+  - `VITE_API_URL`: Your deployed backend URL
+
+
