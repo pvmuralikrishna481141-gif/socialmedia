@@ -1,16 +1,54 @@
-# React + Vite
+# Socially - Fullstack Social Media Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern social media application structured into a React frontend client and an Express/MongoDB backend server.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+socialmedia-main/
+├── client/                 # Frontend React application (Vite + Tailwind CSS)
+│   ├── src/                # React components, pages, services, assets
+│   ├── public/             # Static assets
+│   ├── .env.example        # Environment variables template for client
+│   ├── package.json        # Client dependencies & scripts
+│   └── vite.config.js      # Vite configuration
+│
+├── server/                 # Backend REST API (Node.js + Express + Mongoose)
+│   ├── config/             # DB configuration
+│   ├── controllers/        # Request handlers
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # API routes
+│   ├── .env.example        # Environment variables template for server
+│   ├── package.json        # Server dependencies & scripts
+│   └── server.js           # Server entry point
+│
+├── package.json            # Root scripts for running client & server
+├── SETUP.md                # Detailed setup & run instructions
+└── README.md
+```
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Install Dependencies
+```bash
+npm run install:all
+```
+*(Or run `npm install` inside both `client` and `server` folders)*
 
-## Expanding the ESLint configuration
+### 2. Configure Environment
+- Copy `server/.env.example` to `server/.env` and configure your `MONGO_URI`.
+- Copy `client/.env.example` to `client/.env` (configured for `http://localhost:5000` by default).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 3. Run Applications
+
+In two separate terminals:
+
+```bash
+# Terminal 1: Run server (http://localhost:5000)
+npm run server
+
+# Terminal 2: Run client (http://localhost:5173)
+npm run client
+```
+
+For more detailed API and setup documentation, see [SETUP.md](SETUP.md).
